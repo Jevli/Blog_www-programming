@@ -58,7 +58,6 @@ http://www.springframework.org/schema/security/spring-security-3.2.xsd">
         <intercept-url pattern="/quiz/**"
                        access="hasAnyRole('ROLE_ANONYMOUS','ROLE_GUEST')" />
 
-        <!--  This should be anyone or superadmin if he can do users -->
         <intercept-url pattern="/user/create"
                        access="hasAnyRole('ROLE_ANONYMOUS','ROLE_GUEST')" />
 
@@ -67,11 +66,10 @@ http://www.springframework.org/schema/security/spring-security-3.2.xsd">
                        access="hasAnyRole('ROLE_ANONYMOUS','ROLE_GUEST')" />
 
 
-        <!-- THSI MUST BE CHANGED TO PRODUCTION SYSTEM -->
         <intercept-url pattern="/account/**"
                        access="hasAnyRole('ROLE_USER','ROLE_SUPERUSER','ROLE_GUEST','ROLE_ANONYMOUS')" />
 
-        <!-- LISÄTTY TÄNNE YLIMÄÄRÄINEN RIVI, TARKISTA JÄRKEVYYS MYÖHEMMIN -->
+
         <intercept-url pattern="/blog/index"
                        access="hasAnyRole('ROLE_ANONYMOUS', 'ROLE_GUEST')" />
         <intercept-url pattern="/blog/manage"

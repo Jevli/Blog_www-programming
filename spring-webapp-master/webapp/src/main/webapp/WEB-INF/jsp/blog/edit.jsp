@@ -6,8 +6,6 @@
 
 <body>
 
-<!-- Missing installation of tinymce so using webpage. Whole tinymce code is from their own webpage http://www.tinymce.com/tryit/full.php -->
-
 <div class="info">
     <spring:message code="edit.info.th" text="Max number of chars for post is 250"/>
 </div>

@@ -84,7 +84,7 @@ public class BlogController {
                 post.setUser(personRepository.findById(u.getId()));
             }
         } catch (Exception e) {
-            // should not be able to later on
+            
         }
 
         blogService.createPost(post);
