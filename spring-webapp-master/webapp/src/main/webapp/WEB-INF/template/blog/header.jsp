@@ -7,8 +7,16 @@
 <spring:url value="/login" var="loginUrl" htmlEscape="true"/>
 <spring:url value="/j_spring_security_logout" var="logoutUrl" htmlEscape="true"/>
 <spring:url value="/blog/manage" var="manageUrl" htmlEscape="true"/>
+<spring:url value="/blog/editAccount" var="editAccUrl" htmlEscape="true"/>
 
 <p>
+    <c:choose>
+        <c:when test="${logedin}">
+            <spring:message code="menu.welcome.th" text="Welcome: " />${user.username}
+            &nbsp;&nbsp;|&nbsp;&nbsp;
+        </c:when>
+    </c:choose>
+
     <a href="${homeUrl}"><spring:message code="menu.home.th" text="Home" /></a>
     &nbsp;&nbsp;|&nbsp;&nbsp;
 
@@ -21,6 +29,11 @@
                     &nbsp;&nbsp;|&nbsp;&nbsp;
                     <a href="${manageUrl}"><spring:message code="menu.manage.th" text="Manage Accounts"/></a>
                 </c:when>
+
+                <c:otherwise>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;
+                    <a href="${editAccUrl}/${user.id}"><spring:message code="menu.editAcc.th" text="Edit Account"/></a>
+                </c:otherwise>
             </c:choose>
 
         </c:when>

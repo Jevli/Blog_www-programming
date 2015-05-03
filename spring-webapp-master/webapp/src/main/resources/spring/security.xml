@@ -73,7 +73,7 @@ http://www.springframework.org/schema/security/spring-security-3.2.xsd">
         <intercept-url pattern="/blog/index"
                        access="hasAnyRole('ROLE_ANONYMOUS', 'ROLE_GUEST')" />
         <intercept-url pattern="/blog/manage"
-                       access="hasAnyRole('ROLE_SUPERUSER')" />               
+                       access="hasAnyRole('ROLE_SUPERUSER')" />
         <intercept-url pattern="/blog/**"
                        access="hasAnyRole('ROLE_USER')" />
         

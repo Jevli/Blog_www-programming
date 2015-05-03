@@ -43,7 +43,7 @@ public class BlogController {
     @Autowired
     PersonRepository personRepository;
 
-    @RequestMapping(value = "/index")
+    @RequestMapping(value = {"/", "", "index"})
     public String index(Model model) {
         model = basic(model);
         return "/blog/index";
@@ -55,6 +55,8 @@ public class BlogController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (!(auth instanceof AnonymousAuthenticationToken)) {
             model.addAttribute("logedin", true);
+            WwwUser u = UserUtil.getWwwUser();
+            model.addAttribute("user", personRepository.findById(u.getId()));
         } else {
             model.addAttribute("logedin", false);
         }
@@ -95,8 +97,25 @@ public class BlogController {
 
     @RequestMapping(value= "/manage")
     public String manage(Model model) {
+        model = basic(model);
         model.addAttribute("users", personRepository.findUsers());
         return "/blog/manage";
+    }
+
+    @RequestMapping(value="/editAccount/{uid}")
+    public String editAccount(@PathVariable("uid") Long uid, Model model) {
+        WwwUser u = UserUtil.getWwwUser();
+        String uname = personRepository.findById(uid).getUserName();
+
+        if(u.isSuperuser() || u.getUsername().equals(uname)) {
+            model = basic(model);
+            model.addAttribute("editUser", personRepository.findById(uid));
+            return "/blog/editAccount";
+        }
+        else {
+            model.addAttribute("what", "edit accout");
+            return "/blog/notRights";
+        }
     }
 
     @RequestMapping(value = "/deletePost/{pid}")
@@ -110,7 +129,7 @@ public class BlogController {
                 model = basic(model);
                 return "/blog/index";
             } else {
-                model.addAttribute("what", "delete");
+                model.addAttribute("what", "delete post");
                 return "/blog/notRights";
             }
     }
@@ -126,7 +145,7 @@ public class BlogController {
                 model.addAttribute("post", post);
                 return "/blog/edit";
             } else {
-                model.addAttribute("what", "edit");
+                model.addAttribute("what", "edit post");
                 return "/blog/notRights";
             }
     }
