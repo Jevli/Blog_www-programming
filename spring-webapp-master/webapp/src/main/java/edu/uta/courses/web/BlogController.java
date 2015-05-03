@@ -4,6 +4,7 @@ import com.sun.org.apache.xpath.internal.operations.Bool;
 import edu.uta.courses.repository.PersonRepository;
 import edu.uta.courses.repository.domain.Blog;
 import edu.uta.courses.repository.domain.WwwUser;
+import org.apache.log4j.Logger;
 import edu.uta.courses.service.BlogService;
 import edu.uta.courses.util.UserUtil;
 import org.joda.time.DateTime;
@@ -42,6 +43,9 @@ public class BlogController {
 
     @Autowired
     PersonRepository personRepository;
+
+    Logger log = Logger.getLogger(BlogController.class.getName());
+
 
     @RequestMapping(value = {"/", "", "index"})
     public String index(Model model) {
@@ -127,10 +131,10 @@ public class BlogController {
             if(u.isSuperuser() || u.getUsername().equals(uname)) {
                 blogService.deletePost(pid);
                 model = basic(model);
-                return "/blog/index";
+                return "blog/index";
             } else {
                 model.addAttribute("what", "delete post");
-                return "/blog/notRights";
+                return "blog/notRights";
             }
     }
 

@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="../../init.jspf" %>
 
 <spring:url value="/blog/post" var="postURL" htmlEscape="true"/>
@@ -32,7 +29,7 @@
         </legend>
         <div class="postDiv">
 
-            <p>${post.post}</p>
+           <p>${post.post}</p>
 
             <div class="postButtons">
                 &nbsp;<button onclick="location.href='${editPost}/${post.id}'"><spring:message code="blog.edit.th" text="Edit"/></button>
