@@ -3,6 +3,7 @@ package edu.uta.courses.web;
 import edu.uta.courses.repository.PersonRepository;
 import edu.uta.courses.repository.domain.Constants;
 import edu.uta.courses.repository.domain.User;
+import edu.uta.courses.repository.domain.WwwUser;
 import edu.uta.courses.util.UserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PathVariable;
 
 /**
  * Created by me on 10.2.2015.
@@ -48,5 +50,63 @@ public class UserController {
         return "/user/show";
     }
 
+    @RequestMapping(value="/updateFirstName/{uid}/{newName}")
+    public String updateFirstName(@PathVariable("uid") Long uid, @PathVariable("newName") String newName){
+        User user = personRepository.findById(uid);
+        WwwUser u = UserUtil.getWwwUser();
 
+        String uname = user.getUserName();
+        if(u.isSuperuser() || u.getUsername().equals(uname)) {
+            user.setFirstName(newName);
+            personRepository.update(user);
+            return "redirect:/blog/editAccount/" + uid;
+        } else {
+            return "redirect:/blog/editAccount/" + uid;
+        }
+    }
+
+    @RequestMapping(value="/updateLastName/{uid}/{newName}")
+    public String updateLastName(@PathVariable("uid") Long uid, @PathVariable("newName") String newName){
+        User user = personRepository.findById(uid);
+        WwwUser u = UserUtil.getWwwUser();
+
+        String uname = user.getUserName();
+        if(u.isSuperuser() || u.getUsername().equals(uname)) {
+            user.setLastName(newName);
+            personRepository.update(user);
+            return "redirect:/blog/editAccount/" + uid;
+        } else {
+            return "redirect:/blog/editAccount/" + uid;
+        }
+    }
+
+    @RequestMapping(value="/updateEmail/{uid}/{newEmail}")
+    public String updateEmail(@PathVariable("uid") Long uid, @PathVariable("newEmail") String newEmail){
+        User user = personRepository.findById(uid);
+        WwwUser u = UserUtil.getWwwUser();
+
+        String uname = user.getUserName();
+        if(u.isSuperuser() || u.getUsername().equals(uname)) {
+            user.setEmail(newEmail);
+            personRepository.update(user);
+            return "redirect:/blog/editAccount/" + uid;
+        } else {
+            return "redirect:/blog/editAccount/" + uid;
+        }
+    }
+
+    @RequestMapping(value="/updateMobile/{uid}/{newMobile}")
+    public String updateMobile(@PathVariable("uid") Long uid, @PathVariable("newMobile") String newMobile){
+        User user = personRepository.findById(uid);
+        WwwUser u = UserUtil.getWwwUser();
+
+        String uname = user.getUserName();
+        if(u.isSuperuser() || u.getUsername().equals(uname)) {
+            user.setMobile(newMobile);
+            personRepository.update(user);
+            return "redirect:/blog/editAccount/" + uid;
+        } else {
+            return "redirect:/blog/editAccount/" + uid;
+        }
+    }
 }
