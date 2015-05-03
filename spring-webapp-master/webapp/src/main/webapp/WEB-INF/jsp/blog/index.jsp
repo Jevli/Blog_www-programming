@@ -2,6 +2,7 @@
 
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ include file="../../init.jspf" %>
 
 <spring:url value="/blog/post" var="postURL" htmlEscape="true"/>
 <spring:url value="/blog/editPost" var="editPost" htmlEscape="true"/>
@@ -26,8 +27,8 @@
     <fieldset>
         <legend>
             &nbsp;<spring:message code="blog.sender.th" text="Sender"/>: ${post.user.userName}
-            &nbsp;<spring:message code="blog.date.th" text="Date"/>: ${post.createdOn}
-            &nbsp;
+            &nbsp;<spring:message code="blog.created.th" text="Created"/>: <joda:format  pattern="HH.mm // dd.MM.yyyy"  value="${post.createdOn}"/>
+            &nbsp;<spring:message code="blog.modified.th" text="Modified"/>: <joda:format  pattern="HH.mm // dd.MM.yyyy"  value="${post.modifiedOn}"/>
         </legend>
         <div class="postDiv">
 

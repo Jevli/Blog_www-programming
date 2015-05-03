@@ -122,6 +122,14 @@ tr, td {
     width: 10%;
 }
 
+.table {
+    display: inline-block;
+}
+
+.userDataTable {
+    width: 400px;
+}
+
 .postDiv {
     margin: 2%;
 }

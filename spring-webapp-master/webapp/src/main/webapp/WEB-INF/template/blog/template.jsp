@@ -10,6 +10,10 @@
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <link href="<c:url value='/resources/css/blog.css' />" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="<c:url value='/resources/js/js.js' />"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
 </head>
 
 <body>
