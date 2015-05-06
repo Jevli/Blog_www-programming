@@ -20,10 +20,8 @@ public class HelloController {
     Logger logger = Logger.getLogger(HelloController.class.getName());
 
     @RequestMapping(value = {"/"})
-    public String helloWorld(Model model) {
-        model.addAttribute("greeting", "hello World!");
-        System.out.println("helloWorld");
-        return "hello";
+    public String redirect(Model model) {
+        return "redirect:/blog/index";
     }
 
     @RequestMapping("/home")

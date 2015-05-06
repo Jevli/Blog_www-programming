@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ include file="../../init.jspf" %>
 
 <spring:url value="/blog/index" var="indexUrl" htmlEscape="true"/>
 

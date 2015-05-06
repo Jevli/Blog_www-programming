@@ -85,13 +85,10 @@ public class BlogController {
 
         // getUser
         WwwUser u = UserUtil.getWwwUser();
-        try {
-            if (u != null) {
-                post.setUser(personRepository.findById(u.getId()));
-            }
-        } catch (Exception e) {
+        
+        if (u != null)
+            post.setUser(personRepository.findById(u.getId()));
             
-        }
 
         blogService.createPost(post);
         sessionStatus.setComplete();
@@ -131,10 +128,10 @@ public class BlogController {
             if(u.isSuperuser() || u.getUsername().equals(uname)) {
                 blogService.deletePost(pid);
                 model = basic(model);
-                return "blog/index";
+                return "/blog/index";
             } else {
                 model.addAttribute("what", "delete post");
-                return "blog/notRights";
+                return "/blog/notRights";
             }
     }
 

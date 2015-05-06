@@ -29,7 +29,7 @@
         </legend>
         <div class="postDiv">
 
-           <p>${post.post}</p>
+           <c:out value="${post.post}"/>
 
             <div class="postButtons">
                 &nbsp;<button onclick="location.href='${editPost}/${post.id}'"><spring:message code="blog.edit.th" text="Edit"/></button>
