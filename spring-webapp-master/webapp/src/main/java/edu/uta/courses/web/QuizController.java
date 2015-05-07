@@ -1,6 +1,5 @@
 package edu.uta.courses.web;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import edu.uta.courses.repository.PersonRepository;
 import edu.uta.courses.repository.domain.Quiz;
 import edu.uta.courses.repository.domain.WwwUser;

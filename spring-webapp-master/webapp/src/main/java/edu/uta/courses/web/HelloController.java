@@ -1,11 +1,6 @@
 package edu.uta.courses.web;
 
-import edu.uta.courses.repository.domain.WwwUser;
-import edu.uta.courses.util.UserUtil;
 import org.apache.log4j.Logger;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;

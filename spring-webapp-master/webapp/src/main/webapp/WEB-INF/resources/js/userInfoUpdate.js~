@@ -1,0 +1,31 @@
+function updateFirstName(input) {
+   $.post( "/user/updateFirstName/" +id + "/" + input,
+      function() {
+         window.location.reload();
+      }
+   );
+}
+
+function updateLastName(id, input) {
+   $.post( "/user/updateLastName/" +id + "/" + input,
+      function() {
+         window.location.reload();
+      }
+   );
+}
+
+function updateEmail(id, input) {
+   $.post( "/user/updateEmail/" +id + "/" + input,
+      function() {
+         window.location.reload();
+      }
+   );
+}
+
+function updateMobile(id, input) {
+   $.post( "/user/updateMobile/" +id + "/" + input, 
+      function() {
+         window.location.reload();
+      }
+   );
+}

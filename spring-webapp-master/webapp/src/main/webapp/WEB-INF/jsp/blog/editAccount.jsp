@@ -19,6 +19,7 @@
     </table>
 </div>
 
+<script type="text/javascript" src="<c:url value='/resources/js/userInfoUpdate.js' />"></script>
 <script>
     $('.editable')
         .css('cursor', 'pointer')
@@ -31,16 +32,16 @@
 
                 switch(e.target.id) {
                     case "first name":
-                        updateFirstName(input);
+                        updateFirstName(${editUser.id}, input);
                         break;
                     case "last name":
-                        updateLastName(input);
+                        updateLastName(${editUser.id}, input);
                         break;
                     case "email address":
-                        updateEmail(input);
+                        updateEmail(${editUser.id}, input);
                         break;
                     case "mobile number":
-                        updateMobile(input);
+                        updateMobile(${editUser.id}, input);
                         break;
                 }
             }
@@ -52,40 +53,7 @@
             function(){
                 $(this).css('background', '');
             }
-        ) ;
-
-    function updateFirstName(input) {
-        $.ajax({
-            url: "${pageContext.request.contextPath}/user/updateFirstName/${editUser.id}/" + input,
-            type: 'POST'
-        });
-        window.location.reload();
-    }
-
-    function updateLastName(input) {
-        $.ajax({
-            url: "${pageContext.request.contextPath}/user/updateLastName/${editUser.id}/" + input,
-            type: 'POST'
-        });
-        window.location.reload();
-    }
-
-    function updateEmail(input) {
-        $.ajax({
-            url: "${pageContext.request.contextPath}/user/updateEmail/${editUser.id}/" + input,
-            type: 'POST'
-        });
-        window.location.reload();
-    }
-
-    function updateMobile(input) {
-        $.ajax({
-            url: "${pageContext.request.contextPath}/user/updateMobile/${editUser.id}/" + input,
-            type: 'POST'
-        });
-        window.location.reload();
-    }
-
+        );
 </script>
 
 </body>

@@ -5,7 +5,6 @@ import edu.uta.courses.repository.domain.Constants;
 import edu.uta.courses.repository.domain.User;
 import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;

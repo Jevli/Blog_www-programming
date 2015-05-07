@@ -77,7 +77,7 @@ http://www.springframework.org/schema/security/spring-security-3.2.xsd">
         <intercept-url pattern="/blog/**"
                        access="hasAnyRole('ROLE_USER')" />
         <intercept-url pattern="/user/**"
-                       access="hasAnyRole('Role_USER')" />
+                       access="hasAnyRole('ROLE_USER')" />
         
 
         <!--
