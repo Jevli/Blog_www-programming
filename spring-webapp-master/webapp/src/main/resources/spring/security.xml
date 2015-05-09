@@ -65,6 +65,10 @@ http://www.springframework.org/schema/security/spring-security-3.2.xsd">
         <intercept-url pattern="/user/show"
                        access="hasAnyRole('ROLE_ANONYMOUS','ROLE_GUEST')" />
 
+		 <!-- THSI MUST BE CHANGED TO PRODUCTION SYSTEM -->
+        <intercept-url pattern="/file/**"
+					   access="hasAnyRole('ROLE_USER','ROLE_SUPERUSER','ROLE_GUEST','ROLE_ANONYMOUS')" />
+
 
         <intercept-url pattern="/account/**"
                        access="hasAnyRole('ROLE_USER','ROLE_SUPERUSER','ROLE_GUEST','ROLE_ANONYMOUS')" />

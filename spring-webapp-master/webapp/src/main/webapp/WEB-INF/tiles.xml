@@ -31,6 +31,10 @@ https://tiles.apache.org/framework/tutorial/advanced/nesting-extending.html
         <put-attribute name="header" value="/WEB-INF/template/blog/header.jsp"  />
         <put-attribute name="footer" value="/WEB-INF/template/blog/footer.jsp"  />
     </definition>
+    
+    <definition name="base.template.upload" template="/WEB-INF/template/blog/upload.jsp" >
+        <put-attribute name="footer" value="/WEB-INF/template/blog/footer.jsp"  />
+    </definition>
 
 
     <definition name="/login" extends="base.template.blog">
@@ -62,7 +66,7 @@ https://tiles.apache.org/framework/tutorial/advanced/nesting-extending.html
         <put-attribute name="bodyTemplate" value="/WEB-INF/jsp/account/{1}.jsp" />
     </definition>
 
-    <definition name="/file/*" extends="base.template.blog">
+    <definition name="/file/*" extends="base.template.upload">
         <put-attribute name="bodyTemplate" value="/WEB-INF/jsp/file/{1}.jsp" />
     </definition>
 

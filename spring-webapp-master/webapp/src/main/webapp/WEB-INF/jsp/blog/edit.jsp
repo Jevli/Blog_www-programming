@@ -17,7 +17,7 @@ tinymce.init({
  });
 </script>
 
-<form method="POST"  action="/blog/postEdit/${post.id}">
+<form name="postForm" method="POST"  action="/blog/postEdit/${post.id}">
     <textarea name="post" rows="10", cols="50", maxlength="250"><c:out value="${post.post}"/></textarea>
     <input type="submit" value="<spring:message code="edit.editPost.th" text="Update message"/>" />
 </form>
