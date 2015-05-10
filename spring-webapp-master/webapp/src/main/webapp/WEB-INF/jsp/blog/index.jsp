@@ -23,7 +23,7 @@
 <c:forEach items="${posts}" var="post" >
     <fieldset>
         <legend>
-            &nbsp;<spring:message code="blog.sender.th" text="Sender"/>: ${post.user.userName}
+            &nbsp;<spring:message code="blog.sender.th" text="Sender"/>: <c:out value="${post.user.userName}" />
             &nbsp;<spring:message code="blog.created.th" text="Created"/>: <joda:format  pattern="HH.mm // dd.MM.yyyy"  value="${post.createdOn}"/>
             &nbsp;<spring:message code="blog.modified.th" text="Modified"/>: <joda:format  pattern="HH.mm // dd.MM.yyyy"  value="${post.modifiedOn}"/>
         </legend>

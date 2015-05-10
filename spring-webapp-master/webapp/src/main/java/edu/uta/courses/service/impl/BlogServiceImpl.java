@@ -60,10 +60,8 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public void editPost(Long id, String post) {
-        Blog post2 = blogRepository.findById(id);
-        post2.setPost(post);
-        blogRepository.update(post2);
+    public void editPost(Blog post) {
+        blogRepository.update(post);
     }
 
     @Override

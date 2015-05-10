@@ -1,6 +1,9 @@
 package edu.uta.courses.repository.domain;
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 
@@ -30,11 +33,17 @@ public class Blog {
 
     @Column(nullable=false, updatable=true, length=512)
     private String post;
+    
+    @Column(nullable=false, updatable=true)
+    private Date title;
+
+    @Column(nullable=true, updatable=true)
+	private String fileName;
 
     @ManyToOne(optional = false)
     User user;
 
-    public Long getId() {
+	public Long getId() {
         return id;
     }
 
@@ -73,4 +82,21 @@ public class Blog {
     public void setPost(String post) {
         this.post = post;
     }
+
+    public String getTitle() {
+    	return new SimpleDateFormat("MM-dd-yyyy").format(title);
+    }
+    
+	public void setTitle(Date title) {
+		this.title = title;
+	}
+	
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String file) {
+		this.fileName = file;
+	}
+
 }

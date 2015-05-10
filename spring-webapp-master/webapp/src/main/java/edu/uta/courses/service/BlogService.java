@@ -32,7 +32,7 @@ public interface BlogService {
      public Blog getPost(Long id);
 
      @Transactional
-     public void editPost(Long id, String post);
+     public void editPost(Blog post);
 
     @Transactional
     public User getUser(Long id);

@@ -6,6 +6,10 @@
 		addFileWindow = open("/file/upload", "upload", 'resizable=no,width=500,height=250');
 		if (addFileWindow.opener == null) addFileWindow.opener = self;
 	}
+	
+	$(function() {
+	    $( "#datepicker" ).datepicker();
+	});
 </script>
 
 <body>
@@ -24,9 +28,9 @@ tinymce.init({
 </script>
 
 <form name="postForm" method="POST"  action="addPost">
-	<!--TODO DATE PICKER AND HEAD LINE FOR POST -->
+	Date: <input name="title" type="text" id="datepicker" readonly>
     <textarea name="post" rows="10" cols="50" maxlength="250"></textarea>
-    <input name="fileName" type="text" value="" readonly>
+    File name: <input name="fileName" type="text" value="" readonly>
     <input type="button" value="Add file" onclick="addFile()"> <br/>
     <input type="submit" value="<spring:message code="post.newPost.th" text="Post new message"/>" />
 </form>

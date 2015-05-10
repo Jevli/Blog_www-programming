@@ -1,11 +1,16 @@
 package edu.uta.courses.web;
 
+import java.util.Date;
+
 import edu.uta.courses.repository.PersonRepository;
 import edu.uta.courses.repository.domain.Blog;
 import edu.uta.courses.repository.domain.WwwUser;
+
 import org.apache.log4j.Logger;
+
 import edu.uta.courses.service.BlogService;
 import edu.uta.courses.util.UserUtil;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,7 +41,6 @@ public class BlogController {
     PersonRepository personRepository;
 
     Logger log = Logger.getLogger(BlogController.class.getName());
-
 
     @RequestMapping(value = {"/", "", "index"})
     public String index(Model model) {
@@ -70,11 +74,17 @@ public class BlogController {
     }
 
     @RequestMapping(value = "/addPost", method = RequestMethod.POST)
-    public String addPost(SessionStatus sessionStatus, @RequestParam("post") String newPost, Model model) {
+    public String addPost(SessionStatus sessionStatus,
+    		@RequestParam("title") Date title,
+    		@RequestParam("post") String newPost,
+    		@RequestParam("fileName") String file,
+    		Model model) {
+    	
         Blog post = new Blog();
         post.setPost(newPost);
+        post.setTitle(title);
+        post.setFileName(file);
 
-        // getUser
         WwwUser u = UserUtil.getWwwUser();
         
         if (u != null)
@@ -143,9 +153,19 @@ public class BlogController {
     }
 
     @RequestMapping(value = "/postEdit/{pid}", method = RequestMethod.POST)
-    public String postEdit(SessionStatus sessionStatus, @RequestParam("post") String post, @PathVariable("pid") Long pid, Model model) {
-        blogService.editPost(pid, post);
+    public String postEdit(SessionStatus sessionStatus,
+    		@RequestParam("title") Date title,
+    		@RequestParam("post") String post,
+    		@RequestParam("fileName") String file,
+    		@PathVariable("pid") Long pid,
+    		Model model) {
+    	Blog oldPost = blogService.getPost(pid);
+    	oldPost.setTitle(title);
+    	oldPost.setPost(post);
+    	oldPost.setFileName(file);
+        blogService.editPost(oldPost);
         model = basic(model);
         return "/blog/index";
     }
+
 }
