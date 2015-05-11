@@ -1,5 +1,8 @@
 package edu.uta.courses.web;
 
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
@@ -9,25 +12,28 @@ public class UserCreateForm {
 
     private Long userId;
 
-    @NotEmpty
+    @NotNull(message="Please select username")
+    @Length(min=4, max=10, message="Username should be between 4 - 10 characters.")
     private String userName;
 
-    @NotEmpty
+    @NotNull(message="Please select password")
+    @Length(min=4, max=64, message="Password should be between 4 - 64 characters.")
     private String password1;
 
-    @NotEmpty
+    @NotNull(message="Please give password again")
+    @Length(min=4, max=64, message="Password should be between 4 - 64 characters.")
     private String password2;
 
-    @NotEmpty
+    @NotNull(message="Please give your first name")
     private String firstName;
 
-    @NotEmpty
+    @NotNull(message="Please give your last name")
     private String lastName;
 
-    @NotEmpty
+    @NotNull(message="Please give your email")
     private String email;
 
-    @NotEmpty
+    @NotEmpty(message="Please give your country")
     private String country;
 
 

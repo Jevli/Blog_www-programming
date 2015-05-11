@@ -37,43 +37,10 @@ http://www.springframework.org/schema/security/spring-security-3.2.xsd">
         <intercept-url pattern="/j_spring_security_logout"  access="hasAnyRole('ROLE_ANONYMOUS','ROLE_GUEST')" />
 
         <!-- Resources -->
-        <intercept-url pattern="/resources/**"
-                       access="hasAnyRole('ROLE_ANONYMOUS','ROLE_GUEST')" />
-
-        <intercept-url pattern="/theme/**"
-                       access="hasAnyRole('ROLE_ANONYMOUS','ROLE_GUEST')" />
-
-        <intercept-url pattern="/home"
-                       access="hasAnyRole('ROLE_ANONYMOUS','ROLE_GUEST')" />
-
-        <intercept-url pattern="/about"
-                       access="hasAnyRole('ROLE_ANONYMOUS','ROLE_GUEST')" />
-
-        <intercept-url pattern="/formexample/**"
-                       access="hasAnyRole('ROLE_ANONYMOUS','ROLE_GUEST')" />
-
-        <intercept-url pattern="/numberlist/**"
-                       access="hasAnyRole('ROLE_ANONYMOUS','ROLE_GUEST')" />
-
-        <intercept-url pattern="/quiz/**"
-                       access="hasAnyRole('ROLE_ANONYMOUS','ROLE_GUEST')" />
-
         <intercept-url pattern="/user/create"
-                       access="hasAnyRole('ROLE_ANONYMOUS','ROLE_GUEST')" />
-
-        <!-- who should this be? -->
-        <intercept-url pattern="/user/show"
-                       access="hasAnyRole('ROLE_ANONYMOUS','ROLE_GUEST')" />
-
-		 <!-- THSI MUST BE CHANGED TO PRODUCTION SYSTEM -->
+                       access="hasAnyRole('ROLE_ANONYMOUS')" />
         <intercept-url pattern="/file/**"
-					   access="hasAnyRole('ROLE_USER','ROLE_SUPERUSER','ROLE_GUEST','ROLE_ANONYMOUS')" />
-
-
-        <intercept-url pattern="/account/**"
-                       access="hasAnyRole('ROLE_USER','ROLE_SUPERUSER','ROLE_GUEST','ROLE_ANONYMOUS')" />
-
-
+					   access="hasAnyRole('ROLE_USER')" />
         <intercept-url pattern="/blog/index"
                        access="hasAnyRole('ROLE_ANONYMOUS', 'ROLE_GUEST')" />
         <intercept-url pattern="/blog/manage"
@@ -82,11 +49,9 @@ http://www.springframework.org/schema/security/spring-security-3.2.xsd">
                        access="hasAnyRole('ROLE_USER')" />
         <intercept-url pattern="/user/**"
                        access="hasAnyRole('ROLE_USER')" />
-        
-
         <!--
-        any other url requires superuser privileges
-        this should be denied from all as any url should be mentioned above.
+        	any other url requires superuser privileges
+        	this should be denied from all as any url should be mentioned above.
         -->
         <intercept-url pattern="/**" access="hasAnyRole('ROLE_SUPERUSER')" />
 

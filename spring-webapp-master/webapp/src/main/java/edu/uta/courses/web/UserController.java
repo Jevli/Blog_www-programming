@@ -1,13 +1,17 @@
 package edu.uta.courses.web;
 
+import javax.validation.Valid;
+
 import edu.uta.courses.repository.PersonRepository;
 import edu.uta.courses.repository.domain.Constants;
 import edu.uta.courses.repository.domain.User;
 import edu.uta.courses.repository.domain.WwwUser;
 import edu.uta.courses.util.UserUtil;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,14 +28,19 @@ public class UserController {
     PersonRepository personRepository;
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public String editPersonOpen(@ModelAttribute("form") UserCreateForm form, Model model) {
-
+    public String editPersonOpen(Model model) {
+    	UserCreateForm userCreateForm = new UserCreateForm();
+    	model.addAttribute("userCreateForm", userCreateForm);
         return "/user/create";
     }
 
     @RequestMapping(value = {"/create"}, method = RequestMethod.POST)
-    public String editPersonCommit(@ModelAttribute("form") UserCreateForm form, Model model) {
-        User user = new User();
+    public String editPersonCommit(@Valid @ModelAttribute("userCreateForm") UserCreateForm form, BindingResult result, Model model) {
+        if(result.hasErrors()) {
+        	return "/user/create";
+        }
+        
+    	User user = new User();
 
         user.setPassword(UserUtil.getSHA256Password(form.getPassword1(), form.getUserName()));
         user.setSecurityRoles(Constants.ROLE_USER);
