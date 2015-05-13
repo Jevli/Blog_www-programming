@@ -94,7 +94,7 @@ public class BlogController {
         blogService.createPost(post);
         sessionStatus.setComplete();
         model = basic(model);
-        return "/blog/index";
+        return "redirect:/blog/index/";
     }
 
     @RequestMapping(value= "/manage")
@@ -129,7 +129,7 @@ public class BlogController {
             if(u.isSuperuser() || u.getUsername().equals(uname)) {
                 blogService.deletePost(pid);
                 model = basic(model);
-                return "/blog/index";
+                return "redirect:/blog/index/"; 
             } else {
                 model.addAttribute("what", "delete post");
                 return "/blog/notRights";
@@ -152,7 +152,7 @@ public class BlogController {
             }
     }
 
-    @RequestMapping(value = "/postEdit/{pid}", method = RequestMethod.POST)
+    @RequestMapping(value = "/editPost/{pid}", method = RequestMethod.POST)
     public String postEdit(SessionStatus sessionStatus,
     		@RequestParam("title") Date title,
     		@RequestParam("post") String post,
@@ -164,8 +164,9 @@ public class BlogController {
     	oldPost.setPost(post);
     	oldPost.setFileName(file);
         blogService.editPost(oldPost);
+    	sessionStatus.setComplete();
         model = basic(model);
-        return "/blog/index";
+        return "redirect:/blog/index/";
     }
 
 }

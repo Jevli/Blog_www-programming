@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <%@ include file="../../init.jspf" %>
 
-<spring:url value="/blog/postEdit/" var="editPostUrl" htmlEscape="true"/>
-
 <script>
 	function addFile() {
 		addFileWindow = open("/file/upload", "upload", 'resizable=no,width=500,height=250');
@@ -21,6 +19,7 @@
 </div>
 
 <script src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script>
+<script scr="<c:url value='/resources/js/fileUpload.js' />"></script>
 <script type="text/javascript">
 tinymce.init({
     selector: "textarea",
@@ -28,8 +27,8 @@ tinymce.init({
  });
 </script>
 
-<form name="postForm" method="POST"  action="/blog/postEdit/${post.id}">
-	Date: <input name="title" type="text" id="datepicker" value="${post.title}" readonly>
+<form name="postForm" method="POST"  action="/blog/editPost/${post.id}">
+	Date: <input name="title" type="text" id="datepicker" value="<fmt:formatDate type="date" value="${post.title}"/>" readonly>
     <textarea name="post" rows="10" cols="50" maxlength="250"><c:out value="${post.post}"/></textarea>
     File name: <input name="fileName" type="text" value="${post.fileName}" readonly>
     <input type="button" value="Add file" onclick="addFile()"> <br/>

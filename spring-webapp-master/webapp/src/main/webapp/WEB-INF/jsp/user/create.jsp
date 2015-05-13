@@ -10,45 +10,45 @@
 <spring:url value="/user/create" var="formAction" htmlEscape="true"/>
 
 
-<form:form commandName="userCreateForm" id="personform" methodParam="POST">
-<form:errors path="*" element="div"/>
-<table>
+<form:form commandName="userCreateForm" methodParam="POST">
+<table class="tableWithNoBorders">
     <tr>
         <td>Kirjautumistunnus</td>
         <td><form:input path="userName" /></td>
-        <td><form:errors element="userName" cccStyle="color: #ff0000;"/></td>
+        <td><form:errors path="userName"/></td>
     </tr>
     <tr>
         <td>Etunimi</td>
         <td><form:input path="firstName" /></td>
-        <td><form:errors path="firstName" cccStyle="color: #ff0000;"/></td>
+        <td><form:errors path="firstName"/></td>
     </tr>
     <tr>
         <td>Sukunimi</td>
         <td><form:input path="lastName" /></td>
-        <td><form:errors path="lastName" cccStyle="color: #ff0000;"/></td>
+        <td><form:errors path="lastName"/></td>
     </tr>
     <tr>
         <td>Sähköposti</td>
         <td><form:input path="email" /></td>
-        <td><form:errors path="email" cccStyle="color: #ff0000;"/></td>
+        <td><form:errors path="email"/></td>
     </tr>
     <tr>
         <td>Maa</td>
         <td><form:input path="country" /></td>
-        <td><form:errors path="country" cccStyle="color: #ff0000;"/></td>
+        <td><form:errors path="country"/></td>
     </tr>
 	<tr>
         <td>Salasana</td>
         <td><form:password path="password1" /></td>
-        <td><form:errors path="password1" cccStyle="color: #ff0000;"/></td>
+        <td><form:errors path="password1"/></td>
     </tr>
     <tr>
         <td>Salasana varmistus</td>
         <td><form:password path="password2" /></td>
-        <td><form:errors path="password2" cccStyle="color: #ff0000;"/></td>
+        <td><form:errors path="password2"/></td>
     </tr>
     <tr>
+    	<td></td>
     	<td><form:button type="submit" id="formSubmit" name="formSubmit" value="save">Tallenna</form:button></td>
     </tr>
 </table>

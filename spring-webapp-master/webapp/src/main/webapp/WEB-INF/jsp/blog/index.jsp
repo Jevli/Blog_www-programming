@@ -5,6 +5,7 @@
 <spring:url value="/blog/editPost" var="editPost" htmlEscape="true"/>
 <spring:url value="/blog/deletePost" var="deletePost" htmlEscape="true"/>
 
+<body>
 <c:set var="logedin" scope="session" value="${logedin}"/>
 <c:choose>
     <c:when test="${logedin}">
@@ -27,6 +28,7 @@
             &nbsp;<spring:message code="blog.modified.th" text="Modified"/>: <joda:format  pattern="HH.mm // dd.MM.yyyy"  value="${post.modifiedOn}"/>
         </legend>
         <div class="postDiv">
+        	<h1><fmt:formatDate type="date" value="${post.title}" /></h1>
 			<h1><c:out value="${post.title}"></c:out></h1><br>
            	<p><c:out value="${post.post}"/></p><br>
            	
@@ -42,5 +44,5 @@
         </div>
     </fieldset>
 </c:forEach>
-
+</body>
 </html>

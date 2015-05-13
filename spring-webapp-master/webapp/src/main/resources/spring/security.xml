@@ -37,8 +37,10 @@ http://www.springframework.org/schema/security/spring-security-3.2.xsd">
         <intercept-url pattern="/j_spring_security_logout"  access="hasAnyRole('ROLE_ANONYMOUS','ROLE_GUEST')" />
 
         <!-- Resources -->
+        <intercept-url pattern="/resources/**" 
+        			   access="hasAnyRole('ROLE_ANONYMOUS', 'ROLE_GUEST')"/>
         <intercept-url pattern="/user/create"
-                       access="hasAnyRole('ROLE_ANONYMOUS')" />
+                       access="hasAnyRole('ROLE_ANONYMOUS', 'ROLE_GUEST')" />
         <intercept-url pattern="/file/**"
 					   access="hasAnyRole('ROLE_USER')" />
         <intercept-url pattern="/blog/index"

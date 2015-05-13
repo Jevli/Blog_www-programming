@@ -83,8 +83,8 @@ public class Blog {
         this.post = post;
     }
 
-    public String getTitle() {
-    	return new SimpleDateFormat("MM-dd-yyyy").format(title);
+    public Date getTitle() {
+    	return title;
     }
     
 	public void setTitle(Date title) {
